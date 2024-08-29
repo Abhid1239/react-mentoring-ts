@@ -27,6 +27,7 @@ function BookingSession({ session, onDone }: bookingProps) {
         const data = Object.fromEntries(formData);
         dispatch(bookSession(session))
         onDone();
+        console.log(data)
     }
     return (
         <Modal onClose={onDone} ref={modalRef}>

@@ -4,7 +4,7 @@ import Button from '../UI/Button'
 
 export default function SessionItem({ id, title, image, summary, ...props }: sessionList) {
     return (
-        <article className='session-item'>
+        <article className='session-item' {...props}>
             <img src={image} alt={title} />
             <div className='session-data'>
                 <div>
