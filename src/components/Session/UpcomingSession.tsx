@@ -10,7 +10,7 @@ import { cancelSession } from "../../store/sessionSlice";
 function UpcomingSessionItem({ id, title, summary, date, onCancel, ...props }: sessionList & { onCancel: () => void }) {
 
     return (
-        <article className="upcoming-session">
+        <article className="upcoming-session" {...props}>
             <div>
                 <h3>{title}</h3>
                 <p>{summary}</p>

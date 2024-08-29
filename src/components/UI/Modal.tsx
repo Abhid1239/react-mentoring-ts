@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, ReactNode, useImperativeHandle, useRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, ReactNode, useImperativeHandle, useRef } from 'react'
 import { createPortal } from 'react-dom';
 
 type ModalProps = {

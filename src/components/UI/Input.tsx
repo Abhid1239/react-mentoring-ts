@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
 type InputProps = {
     id: string;

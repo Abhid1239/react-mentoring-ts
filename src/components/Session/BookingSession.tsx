@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useRef } from 'react'
+import { FormEvent, useEffect, useRef } from 'react'
 import { type sessionList } from './SessionList';
 import Modal, { type ModalHandle } from '../UI/Modal';
 import Input from '../UI/Input';

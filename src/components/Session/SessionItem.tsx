@@ -1,4 +1,3 @@
-import React from 'react'
 import { sessionList } from './SessionList'
 import Button from '../UI/Button'
 
