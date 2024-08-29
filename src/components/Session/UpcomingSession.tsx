@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import Modal, { type ModalHandle } from "../UI/Modal"
 import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "../../store/store";
 import { type sessionList } from "./SessionList";
 import Button from "../UI/Button";
 import { cancelSession } from "../../store/sessionSlice";
-import BookingSession from "./BookingSession";
-import { useSessionContext } from "../../store/StoreProvider";
 
 
 function UpcomingSessionItem({ id, title, summary, date, onCancel, ...props }: sessionList & { onCancel: () => void }) {
@@ -33,8 +31,7 @@ function UpcomingSessionItem({ id, title, summary, date, onCancel, ...props }: s
     )
 }
 function UpcomingSession({ onDone }: { onDone: () => void }) {
-    // const { upcomingSessions } = useSelector((state: rootState) => state.session);
-    const { upcomingSessions, removeSession } = useSessionContext();
+    const { upcomingSessions } = useSelector((state: rootState) => state.session)
     const modalRef = useRef<ModalHandle>(null);
     const dispatch = useDispatch();
 
@@ -50,7 +47,7 @@ function UpcomingSession({ onDone }: { onDone: () => void }) {
                 <ul>
                     {upcomingSessions.map(session => (
                         <li key={session.id}>
-                            <UpcomingSessionItem {...session} onCancel={() => removeSession(session.id)} />
+                            <UpcomingSessionItem {...session} onCancel={() => dispatch(cancelSession(session.id))} />
                         </li>
                     ))}
                 </ul>)}

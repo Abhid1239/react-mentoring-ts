@@ -1,12 +1,10 @@
-import React, { FormEvent, useEffect, useRef, useState } from 'react'
+import React, { FormEvent, useEffect, useRef } from 'react'
 import { type sessionList } from './SessionList';
 import Modal, { type ModalHandle } from '../UI/Modal';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { useDispatch } from 'react-redux';
 import { bookSession } from '../../store/sessionSlice';
-import UpcomingSession from './UpcomingSession';
-import { useSessionContext } from '../../store/StoreProvider';
 
 type bookingProps = {
     session: sessionList;
@@ -14,10 +12,8 @@ type bookingProps = {
 }
 
 function BookingSession({ session, onDone }: bookingProps) {
-    // const dispatch = useDispatch()
-    const { addSession } = useSessionContext();
+    const dispatch = useDispatch()
     const modalRef = useRef<ModalHandle>(null);
-
 
     useEffect(() => {
         if (modalRef.current)
@@ -29,10 +25,9 @@ function BookingSession({ session, onDone }: bookingProps) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data = Object.fromEntries(formData);
-        addSession(session)
+        dispatch(bookSession(session))
         onDone();
     }
-
     return (
         <Modal onClose={onDone} ref={modalRef}>
             <h2>
